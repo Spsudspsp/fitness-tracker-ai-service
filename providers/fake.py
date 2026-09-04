@@ -1,7 +1,45 @@
-from schemas.training_plan import GeneratedTrainingPlan, GeneratedWorkout, GeneratedWorkoutExercise, TrainingRequest
+from schemas.training_plan import GeneratedTrainingPlan, GeneratedWorkout, GeneratedWorkoutExercise, TrainingRequest, \
+    AvailableExercise
 
 
-async def generate_plan(prompt) -> GeneratedTrainingPlan:
+FAKE_REQUEST =TrainingRequest(
+        age=30,
+        weight_kg=70,
+        height_cm=180,
+        goal_weight=85,
+        experience_level='Intermediate',
+        days_per_week=2,
+        available_exercises=[
+            AvailableExercise(
+                id=1,
+                name='Squat',
+                description='Standard squats, unweighted',
+            ),
+            AvailableExercise(
+                id=2,
+                name='Bench press',
+                description='Weighted barbell bench press',
+            ),
+            AvailableExercise(
+                id=3,
+                name='Bicep curls',
+                description='Dumbbell bicep curls',
+            ),
+            AvailableExercise(
+                id=4,
+                name='Triceps extensions',
+                description='Dumbbell triceps extensions',
+            ),
+            AvailableExercise(
+                id=5,
+                name='Shoulder press',
+                description='Barbell shoulder press',
+            )
+        ],
+    )
+
+
+async def generate_training_plan(request: TrainingRequest) -> GeneratedTrainingPlan:
     return GeneratedTrainingPlan(
         name="Test Training Plan",
         description="Test training plan description",
