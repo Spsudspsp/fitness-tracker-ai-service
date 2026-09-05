@@ -1,5 +1,5 @@
 from openai import AsyncOpenAI
-from schemas.training_plan import GeneratedTrainingPlan, TrainingRequest
+from schemas.training_plan import TrainingPlan, TrainingRequest
 from settings.config import settings
 
 
@@ -7,12 +7,12 @@ class OpenAIProvider:
     def __init__(self):
         self.client = AsyncOpenAI(api_key=settings.ai_api_key)
 
-    async def generate_training_plan(self, request: TrainingRequest) -> GeneratedTrainingPlan:
+    async def generate_training_plan(self, request: TrainingRequest) -> TrainingPlan:
         res = await self.client.responses.parse(
             model='gpt-5',
             instructions=self._build_system_prompt(),
             input=self._build_user_prompt(request),
-            text_format=GeneratedTrainingPlan
+            text_format=TrainingPlan
         )
 
         if res.output_parsed is None:
