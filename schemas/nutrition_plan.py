@@ -14,7 +14,7 @@ class AvailableFoodItem(BaseModel):
     fats: int
 
 
-class MealRequest(PlanRequest):
+class NutritionRequest(PlanRequest):
     available_food_items: list[AvailableFoodItem]
     training_plan: TrainingPlan | None
 

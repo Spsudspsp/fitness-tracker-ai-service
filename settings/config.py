@@ -2,7 +2,8 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    ai_api_key: str
+    open_ai_api_key: str
+    gemini_api_key: str
     service_key: str
 
     model_config = {

@@ -1,5 +1,7 @@
 from schemas.training_plan import TrainingRequest, TrainingPlan, AvailableExercise
-from providers.fake import provider
+from services.provider import get_provider_service
+
 
 async def generate_training_plan_service(request: TrainingRequest) -> TrainingPlan:
-    return await provider.generate_training_plan(request)
+    provider = get_provider_service(request)
+    return await provider.generate_plan(request)

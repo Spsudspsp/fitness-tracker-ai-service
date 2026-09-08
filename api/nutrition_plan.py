@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from schemas.nutrition_plan import NutritionPlan, MealRequest
+from schemas.nutrition_plan import NutritionPlan, NutritionRequest
 from services.nutrition_plan import generate_nutrition_plan_service
 from settings.security import verify_service_key
 
@@ -11,5 +11,5 @@ router = APIRouter(
 )
 
 @router.post("/generate_nutrition_plan", response_model=NutritionPlan)
-async def generate_nutrition_plan(request: MealRequest) -> NutritionPlan:
+async def generate_nutrition_plan(request: NutritionRequest) -> NutritionPlan:
     return await generate_nutrition_plan_service(request)
