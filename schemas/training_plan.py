@@ -1,3 +1,5 @@
+from enum import Enum
+
 from pydantic import BaseModel, Field
 from schemas.plan_request import PlanRequest
 
@@ -15,7 +17,18 @@ class TrainingRequest(PlanRequest):
     days_per_week: int = Field(ge=1, le=7)
     available_exercises: list[AvailableExercise] = Field(min_length=1)
 
+
 # for response
+
+class Weekday(str, Enum):
+    MON = 'mon'
+    TUE = 'tue'
+    WED = 'wed'
+    THU = 'thu'
+    FRI = 'fri'
+    SAT = 'sat'
+    SUN = 'sun'
+
 
 class WorkoutExercise(BaseModel):
     exercise_id: int
@@ -27,7 +40,7 @@ class Workout(BaseModel):
     name: str
     exercises: list[WorkoutExercise] = Field(min_length=1)
     description: str
-    day: str
+    day: Weekday
 
 
 class TrainingPlan(BaseModel):

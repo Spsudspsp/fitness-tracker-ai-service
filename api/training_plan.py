@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 
 from schemas.training_plan import TrainingRequest, TrainingPlan
-from services.training_plan import generate_training_plan_service
+from services.plan import generate_plan_service
 from settings.security import verify_service_key
 
 router = APIRouter(
@@ -10,6 +10,6 @@ router = APIRouter(
     dependencies=[Depends(verify_service_key)]
 )
 
-@router.post("/generate_training_plan", response_model=TrainingPlan)
+@router.post("/generate", response_model=TrainingPlan)
 async def generate_training_plan(request: TrainingRequest) -> TrainingPlan:
-    return await generate_training_plan_service(request)
+    return await generate_plan_service(request)

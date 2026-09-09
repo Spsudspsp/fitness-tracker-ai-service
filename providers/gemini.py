@@ -12,7 +12,7 @@ class GeminiProvider(AIProviderBase):
         response_schema = self._get_response_schema(request)
 
         res = self.client.models.generate_content(
-            model='gemini-3.6-flash',
+            model=settings.gemini_model,
             contents=self._build_user_prompt(request),
             config=genai.types.GenerateContentConfig(
                 system_instruction=self._build_system_prompt(),

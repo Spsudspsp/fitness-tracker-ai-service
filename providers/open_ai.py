@@ -13,7 +13,7 @@ class OpenAIProvider(AIProviderBase):
         response_schema = self._get_response_schema(request)
 
         res = await self.client.responses.parse(
-            model='gpt-5',
+            model=settings.open_ai_model,
             instructions=self._build_system_prompt(),
             input=self._build_user_prompt(request),
             text_format=response_schema
