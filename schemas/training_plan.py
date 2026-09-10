@@ -7,7 +7,7 @@ from schemas.plan_request import PlanRequest
 # for prompt
 
 class AvailableExercise(BaseModel):
-    id: int
+    id: str
     name: str
     description: str
 
@@ -21,17 +21,17 @@ class TrainingRequest(PlanRequest):
 # for response
 
 class Weekday(str, Enum):
-    MON = 'mon'
-    TUE = 'tue'
-    WED = 'wed'
-    THU = 'thu'
-    FRI = 'fri'
-    SAT = 'sat'
-    SUN = 'sun'
+    MON = 'MON'
+    TUE = 'TUE'
+    WED = 'WED'
+    THU = 'THU'
+    FRI = 'FRI'
+    SAT = 'SAT'
+    SUN = 'SUN'
 
 
 class WorkoutExercise(BaseModel):
-    exercise_id: int
+    exercise: str
     sets: int = Field(ge=1)
     reps: int = Field(ge=1)
 

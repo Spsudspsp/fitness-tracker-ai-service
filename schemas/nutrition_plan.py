@@ -6,7 +6,7 @@ from schemas.training_plan import TrainingPlan
 # for prompt
 
 class AvailableFoodItem(BaseModel):
-    id: int
+    id: str
     name: str = Field(max_length=50)
     calories: int
     carbs: int
@@ -22,7 +22,7 @@ class NutritionRequest(PlanRequest):
 # for response
 
 class MealItem(BaseModel):
-    food_item_id: int
+    food_item_id: str
     quantity: int = Field(ge=1)
 
 
