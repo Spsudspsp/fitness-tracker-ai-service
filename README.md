@@ -168,28 +168,13 @@ Stop the service:
 docker compose down
 ```
 
-Once running, FastAPI documentation is available at: http://127.0.0.1:8001
+Once running, FastAPI documentation is available at: 
 
 ```text
 /docs
 ```
 
-The service is exposed locally at:
-
-## Project Structure
-
-```text
-.
-├── routers/
-│   └── api/
-│       ├── trainingplan.py
-│       └── nutritionplan.py
-├── services/
-│   └── providers/
-├── settings/
-├── models/
-└── main.py
-```
+The service is exposed locally at: http://127.0.0.1:8001
 
 ## Related Components
 
